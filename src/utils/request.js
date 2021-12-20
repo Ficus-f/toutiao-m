@@ -4,9 +4,9 @@
 import axios from 'axios'
 
 const request = axios.create({
-  baseURL: 'http:localhost:8080/' // 接口的基础路径
+  baseURL: '/api' // 接口的基础路径
 })
-
+// http://127.0.0.1:5000/
 // 请求拦截器
 
 // 响应拦截器

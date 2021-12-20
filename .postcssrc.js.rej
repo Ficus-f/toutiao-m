@@ -1,0 +1,26 @@
+diff a/.postcssrc.js b/.postcssrc.js	(rejected hunks)
+@@ -3,9 +3,7 @@ module.exports = {
+-    plugins: {
+-      'postcss-pxtorem': {
+-        // rootValue: 37.5,
+-        // { file } :取参数中的字段
+-        rootValue ({ file }) {
+-          // console.log(file)
+-          return file.indexOf('vant') !== -1 ? 37.5 : 75
+-        },
+-        propList: ['*'],
++  plugins: {
++    'postcss-pxtorem': {
++      // rootValue: 37.5,
++      // { file } :取参数中的字段
++      rootValue ({ file }) {
++        // console.log(file)
++        return file.indexOf('vant') !== -1 ? 37.5 : 75
+@@ -13,2 +11,4 @@ module.exports = {
+-    },
+-  };
+\ No newline at end of file
++      propList: ['*']
++    }
++  }
++}
