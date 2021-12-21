@@ -17,3 +17,13 @@ export const sendSms = mobile => {
     url: `api/sendSms/${mobile}`
   })
 }
+
+/**
+ * 获取用户自己的信息
+ */
+export const getUserInfo = () => {
+  return request({
+    method: 'GET',
+    url: '/user'
+  })
+}

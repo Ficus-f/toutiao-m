@@ -2,7 +2,7 @@
   <div class="layout-container">
       <router-view/>
       <!-- Tabbar -->
-      <van-tabbar class="layout-tabbar" v-model="active" route>
+      <van-tabbar class="layout-tabbar" route>
         <van-tabbar-item to="/home">
             <template v-slot:icon>
                 <i class="toutiao toutiao-shouye"></i>
@@ -25,7 +25,7 @@
             <template v-slot:icon>
                 <i class="toutiao toutiao-wode"></i>
             </template>
-            <span class="text">我的</span>
+            <span class="text">{{ $store.state.user ? '我的' : '未登录' }}</span>
         </van-tabbar-item>
       </van-tabbar>
       <!-- /Tabbar -->
