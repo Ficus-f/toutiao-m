@@ -110,7 +110,7 @@ export default {
         // 确认退出:清除登录状态(容器中的 user + 本地存储中的 user)
         this.$store.commit('setUser', null)
       }).catch(() => {
-        console.log('取消执行这里')
+        // console.log('取消执行这里')
       })
     },
     async loadUserInfo () {
@@ -118,7 +118,6 @@ export default {
       try {
         const { data } = await getUserInfo()
         this.userInfo = data.data
-        console.log(data)
       } catch (err) {
         this.$toast('获取数据失败,请稍后重试')
       }
