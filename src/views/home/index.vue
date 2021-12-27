@@ -9,18 +9,20 @@
           size="small"
           round
           icon="search"
-          @click="onSearch"
         >搜索</van-button>
       </template>
     </van-nav-bar>
     <!-- /导航栏 -->
     <!-- 频道列表 -->
-    <van-tabs class="channel-tabs" animated swipeable>
+    <van-tabs class="channel-tabs" v-model="active" animated swipeable>
       <van-tab
         :title="channel.name"
         v-for="channel in channels"
         :key="channel.id"
-      >{{ channel.name }} 的内容</van-tab>
+      >
+        <article-list :channel="channel"/>
+
+      </van-tab>
       <template #nav-right>
         <i class="placeholder"></i>
         <i class="toutiao toutiao-gengduo hamburger-btn"></i>
@@ -32,18 +34,18 @@
 
 <script>
 import { getUserChannels } from '@/api/user'
+import ArticleList from './components/article-list'
 
 export default {
   name: 'HomeIndex',
-  components: {},
+  components: {
+    ArticleList
+  },
   props: {},
   data () {
     return {
-      channels: [
-        { id: 1, name: 'Java' },
-        { id: 2, name: 'C++' },
-        { id: 1, name: '推荐' }
-      ]
+      active: 0,
+      channels: []
     }
   },
   computed: {},
@@ -67,6 +69,7 @@ export default {
 
 <style lang="less" scoped>
 .home-container {
+  padding-bottom: 100px;
   /deep/.van-nav-bar__title {
     max-width: unset;
   }
