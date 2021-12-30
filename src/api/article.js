@@ -6,7 +6,7 @@ import request from '@/utils/request'
 export const getArticle = (params) => {
   return request({
     method: 'GET',
-    url: 'getArticle',
+    url: 'articles',
     params
   })
 }
