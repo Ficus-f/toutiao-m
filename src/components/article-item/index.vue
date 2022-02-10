@@ -2,8 +2,10 @@
   <van-cell
     class="article-item"
   >
-    <template #title class="title">
-      {{ article.title }}
+    <template #title>
+      <div class="title van-multi-ellipsis--l2">
+        {{ article.title }}
+      </div>
     </template>
     <template #label>
       <div v-if="article.cover.type===3" class="cover-wrap">
@@ -13,25 +15,24 @@
           :key="index"
         >
           <van-image
+            class="cover-item-img"
             :src="img"
-            width="100"
-            height="100"
+            fit="cover"
           />
         </div>
       </div>
-      <div>
+      <div class="label-info-wrap">
         <span>{{article.aut_name}}</span>
-        <span>{{article.comm_count}}</span>
+        <span>{{article.comm_count}}评论</span>
         <span>{{article.pubdate}}</span>
       </div>
     </template>
     <!-- 右插槽 -->
-    <template #default>
+    <template #default v-if="article.cover.type===1">
       <van-image
-        v-if="article.cover.type===1"
-        width="100"
-        height="100"
+        class="right-cover"
         :src="article.cover.images[0]"
+        fit="cover"
       />
     </template>
   </van-cell>
@@ -66,11 +67,36 @@ export default {
 
   }
 
-  .van-cell__value {
+  /deep/.van-cell__value {
     flex: unset;
     width: 232px;
     height: 146px;
+    padding-left: 25px;
   }
-
+  .right-cover {
+    width: 232px;
+    height: 146px;
+  }
+  .label-info-wrap span {
+    font-size: 22px;
+    color: #b4b4b4;
+    margin-right: 25px;
+  }
+  .cover-wrap {
+    display: flex;
+    padding: 30px 0;
+    .cover-item {
+      flex: 1;
+      height: 146px;
+      &:not(:last-child) {
+        padding-right: 4px;
+      }
+      .cover-item-img {
+        width: 100%;
+        height: 146px;
+      }
+    }
+  }
 }
+
 </style>
